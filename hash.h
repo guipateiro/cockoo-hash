@@ -6,17 +6,29 @@
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
+#include "hash.h"
+#define TAM 11
+
+#define OPERACAO_REALIZADA 1
+#define ERRO_POSICAO_OCUPADA 2
 
 typedef struct {
 	int elemento;
 	int excluido;
 } hash;
 
+typedef struct {
+	hash t1[TAM];
+	hash t2[TAM];
+} cockoo_h;
 
-void iniciatabela(hash *tabela);
+
+void inicia_cockoo(cockoo_h *tabela);
 
 void imprime_tabelas(hash *tabela1, hash *tabela2);
 
+int exclui (int valor, cockoo_h *tabela);
 
+int insere (int valor, cockoo_h *tabela);
 
 #endif 
