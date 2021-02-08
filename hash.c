@@ -1,20 +1,17 @@
+
+
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
 #include <limits.h>
 #include <stdlib.h>
+//#include "hash.h"
 #define TAM 11
 
 typedef struct {
 	int elemento;
 	int excluido;
 } hash;
-
-typedef struct{
-	int elemento;
-	char lista[3];
-	char endereco;
-} resposta;
 
 void iniciatabela(hash *tabela){
 	int temp;
