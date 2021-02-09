@@ -39,7 +39,7 @@ void imprime_tabelas(cockoo_h *tabela){
 	hash t1temp = {0,1};
 	hash t2temp = {0,1};
 
-	for (int j = 0; j < TAM; j++){
+	for (int j = 0; j < TAM*2; j++){
 		k1 = -1;
 		k2 = -1;
 		t1temp.elemento = INT_MAX;
