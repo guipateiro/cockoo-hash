@@ -32,19 +32,36 @@ void inicia_cockoo(cockoo_h *tabela){
 	// imprime_debug(tabela);
 }
 
-void imprime_tabelas(hash *tabela1, hash *tabela2){
-	int temp;
-	hash t1temp = {INT_MAX,1};
-	hash t2temp = {INT_MAX,1};
+void imprime_tabelas(cockoo_h *tabela){
+	int i,j;
+	int k1;
+	int k2;
+	hash t1temp = {0,1};
+	hash t2temp = {0,1};
 
-	for(temp = 0 ; temp <= TAM ; temp++){
-		if((tabela1[temp].excluido == 0) && (tabela1[temp].elemento <= t1temp.elemento)){
-			tabela1[temp] = t1temp;
+	for (int j = 0; j < TAM; j++){
+		k1 = -1;
+		k2 = -1;
+		t1temp.elemento = INT_MAX;
+		t2temp.elemento = INT_MAX;
+		for (int i = 0; i < TAM; i++){
+			if (tabela->t1[i].excluido == 0 && tabela->t1[i].elemento <= t1temp.elemento){
+				t1temp.elemento = tabela->t1[i].elemento;
+				k1 = i;
+			}
+			if (tabela->t2[i].excluido == 0 && tabela->t2[i].elemento <= t2temp.elemento){
+				t2temp.elemento = tabela->t2[i].elemento;
+				k2 = i;
+			}
 		}
-		if((tabela2[temp].excluido == 0) && (tabela2[temp].elemento <= t2temp.elemento)){ 
-			tabela2[temp] = t2temp;
+		if (t1temp.elemento <= t2temp.elemento && k1 != -1){
+			printf("%i,T1,%i \n",t1temp.elemento,k1);
+			tabela->t1[k1].excluido = 1;
 		}
-
+		else if (t1temp.elemento > t2temp.elemento && k2 != -1){
+			printf("%i,T2,%i \n",t2temp.elemento, k2 );
+			tabela->t2[k2].excluido = 1;
+		}
 	}
 }
 

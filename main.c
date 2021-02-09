@@ -2,9 +2,6 @@
 #include "hash.h"
 
 int main(){
-	hash tabela1[TAM];
-	hash tabela2[TAM];
-	
 	cockoo_h hash;
 	int i;
 	char op[1];
@@ -21,7 +18,7 @@ int main(){
 			exclui(i, &hash);
 	}
 	
-	imprime_tabelas(tabela1,tabela2);
+	imprime_tabelas(&hash);
 
 	return(0);
 }
