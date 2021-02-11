@@ -10,7 +10,7 @@
 #define TAM 11
 
 #define OPERACAO_REALIZADA 1
-#define ERRO_POSICAO_OCUPADA 2
+#define ERRO 2
 
 typedef struct {
 	int elemento;

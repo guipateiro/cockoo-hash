@@ -11,7 +11,7 @@ int main(){
 	while(!feof(stdin)){
 		if (scanf("%s %i", op, &i) != 2)
 			break;
-		printf("> %s %d \n", op, i);
+		// printf("> %s %d \n", op, i);
 		if (!strcmp(op, "i"))
 			insere(i, &hash);
 		else if	(!strcmp(op, "r"))

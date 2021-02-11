@@ -21,7 +21,7 @@ void iniciatabela(hash *tabela){
 
 	for(temp = 0 ; temp <= TAM ; temp++){
 		tabela[temp].excluido = 1;
-		tabela[temp].elemento = 0;
+		tabela[temp].elemento = -1;
 	}
 }
 
@@ -76,7 +76,7 @@ int insere_tabela(int valor, hash* tabela, int (*funcao_hash)()){
 		tabela[index].excluido = 0;
 		return OPERACAO_REALIZADA;
 	}
-	return ERRO_POSICAO_OCUPADA;
+	return ERRO;
 }
 
 int exclui_tabela(int valor, hash* tabela, int (*funcao_hash)()){
@@ -85,25 +85,31 @@ int exclui_tabela(int valor, hash* tabela, int (*funcao_hash)()){
 		tabela[index].excluido = 1;
 		return OPERACAO_REALIZADA;
 	}
-	return ERRO_POSICAO_OCUPADA;
+	return ERRO;
 }
 
 int insere (int valor, cockoo_h *tabela){
 	int resposta;
 	resposta = insere_tabela(valor, tabela->t1, h1);
-	if(resposta == ERRO_POSICAO_OCUPADA){
+	if(resposta == ERRO){
 		hash item = (tabela->t1)[h1(valor)];
 		insere_tabela(item.elemento, tabela->t2, h2);
 		exclui_tabela(item.elemento, tabela->t1, h1);
 		insere_tabela(valor, tabela->t1, h1);
 	}
 
-	imprime_debug(tabela);
+	// imprime_debug(tabela);
 	return 0;
 }
 
 int exclui (int valor, cockoo_h *tabela){
-	printf("exclui");
+	int resposta;
+	resposta = exclui_tabela(valor, tabela->t1, h1);
+	if(resposta == ERRO){
+		exclui_tabela(valor, tabela->t2, h2);
+	}
+
+	// imprime_debug(tabela);
 
 	return 0;
 }
