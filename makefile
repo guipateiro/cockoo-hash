@@ -4,7 +4,7 @@ LDFLAGS = -lm
 all: hash
 
 hash: main.o hash.o
-	gcc -o myht main.o hash.o $(CFLAGS) $(LDFLAGS) -g
+	gcc -o myht main.o hash.o $(CFLAGS) $(LDFLAGS)
 
 main.o: main.c hash.h
 	gcc -c main.c $(CFLAGS)
