@@ -12,8 +12,6 @@ void iniciatabela(hash *tabela){
 void inicia_cockoo(cockoo_h *tabela){
 	iniciatabela(tabela->t1);
 	iniciatabela(tabela->t2);
-
-	// imprime_debug(tabela);
 }
 
 int imprime_tabelas(cockoo_h *tabela){
@@ -38,11 +36,11 @@ int imprime_tabelas(cockoo_h *tabela){
 			}
 		}
 		if (t1temp.elemento <= t2temp.elemento && k1 != -1){
-			printf("%i,T1,%i\n",t1temp.elemento,k1);
+			printf("%i,T1,%i\n",t1temp.elemento, k1);
 			tabela->t1[k1].excluido = 1;
 		}
 		else if (t1temp.elemento > t2temp.elemento && k2 != -1){
-			printf("%i,T2,%i\n",t2temp.elemento, k2 );
+			printf("%i,T2,%i\n",t2temp.elemento, k2);
 			tabela->t2[k2].excluido = 1;
 		}	
 		else 
@@ -83,7 +81,6 @@ int insere (int valor, cockoo_h *tabela){
 		exclui_tabela(item.elemento, tabela->t1, h1);
 		insere_tabela(valor, tabela->t1, h1);
 	}
-	// imprime_debug(tabela);
 	return OPERACAO_REALIZADA;
 }
 
@@ -93,6 +90,5 @@ int exclui (int valor, cockoo_h *tabela){
 	if(resposta == ERRO){
 		exclui_tabela(valor, tabela->t2, h2);
 	}
-	// imprime_debug(tabela);
 	return OPERACAO_REALIZADA;
 }

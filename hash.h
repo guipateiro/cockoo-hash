@@ -7,8 +7,8 @@
 #include <limits.h>
 #include <stdlib.h>
 #include "hash.h"
-#define TAM 11
 
+#define TAM 11
 #define OPERACAO_REALIZADA 1
 #define ERRO 2
 
@@ -21,7 +21,6 @@ typedef struct {
 	hash t1[TAM];
 	hash t2[TAM];
 } cockoo_h;
-
 
 void inicia_cockoo(cockoo_h *tabela);
 
