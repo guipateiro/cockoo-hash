@@ -25,7 +25,7 @@ typedef struct {
 
 void inicia_cockoo(cockoo_h *tabela);
 
-void imprime_tabelas(cockoo_h *tabela);
+int imprime_tabelas(cockoo_h *tabela);
 
 int exclui (int valor, cockoo_h *tabela);
 
